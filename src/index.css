@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+    font-family: 'Shrikhand';
+    src: url('/fonts/Shrikhand.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Codystar';
+    src: url('/fonts/Codystar.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@theme {
+    --font-shrikhand: "Shrikhand", sans-serif;
+    --font-codystar: "Codystar", sans-serif;
+}
