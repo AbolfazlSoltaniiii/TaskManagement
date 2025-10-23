@@ -14,13 +14,13 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const {handleSubmit, register} = useForm();
+  const { handleSubmit, register } = useForm();
 
   if (sessionStorage.getItem("activeUser")) {
     navigate("/tasks");
   }
 
-  const loginUser = async ({username, password}) => {
+  const loginUser = async ({ username, password }) => {
     const user = await getUserByInfo(username, password);
 
     if (!user.length) {
@@ -34,30 +34,34 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex min-h-screen items-center justify-center">
       <form
-        className="bg-gradient-to-br from-stone-100 to-stone-300 backdrop-blur-md shadow-xl rounded-2xl px-10 py-8 w-[400px] border border-stone-300"
+        className={`rounded-2xl border border-stone-300 bg-gradient-to-br from-stone-200 to-stone-300 px-10 py-8 md:w-[400px] dark:border-stone-600 dark:from-neutral-800 dark:to-neutral-900`}
         onSubmit={handleSubmit(loginUser)}
       >
-        <h2 className="text-3xl font-bold text-center text-stone-800 pb-4 tracking-wide select-none">
+        <h2 className="pb-8 text-center text-3xl font-bold tracking-wide text-stone-800 select-none dark:text-stone-200">
           Welcome Back 👋
         </h2>
 
-        {
-          error && (
-            <div className={"text-center mb-3"}>
-              <Error type={"medium"}>{error}</Error>
-            </div>
-          )
-        }
+        {error && (
+          <div className={"mb-3 text-center"}>
+            <Error type={"medium"}>{error}</Error>
+          </div>
+        )}
 
         <div className="relative mb-6">
-          <FaUser className="absolute left-3 top-3.5 text-stone-500" />
-          <Input type="text" name="username" placeholder="Username" required register={register} />
+          <FaUser className="absolute top-3.5 left-3 text-stone-500" />
+          <Input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+            register={register}
+          />
         </div>
 
         <div className="relative mb-4">
-          <FaLock className="absolute left-3 top-3.5 text-stone-500" />
+          <FaLock className="absolute top-3.5 left-3 text-stone-500" />
           <Input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -69,19 +73,23 @@ const Login = () => {
 
           {showPassword ? (
             <FaEyeSlash
-              className="absolute right-3 top-3.5 text-stone-500 cursor-pointer hover:text-stone-700"
+              className="absolute top-3.5 right-3 cursor-pointer text-stone-500 hover:text-stone-700"
               onClick={() => setShowPassword(!showPassword)}
             />
           ) : (
             <FaEye
-              className="absolute right-3 top-3.5 text-stone-500 cursor-pointer hover:text-stone-700"
+              className="absolute top-3.5 right-3 cursor-pointer text-stone-500 hover:text-stone-700"
               onClick={() => setShowPassword(!showPassword)}
             />
           )}
         </div>
 
-        <div className="flex items-center mb-6">
-          <input id="remember" type="checkbox" className="mr-2 accent-stone-600 focus:outline-stone-500" />
+        <div className="mb-6 flex items-center">
+          <input
+            id="remember"
+            type="checkbox"
+            className="mr-2 accent-stone-600 focus:outline-stone-500"
+          />
           <Label htmlFor={"remember"}> Remember me </Label>
         </div>
 
@@ -89,11 +97,13 @@ const Login = () => {
           <Button type={"large"}>Login</Button>
         </div>
 
-        <p className="text-center text-sm text-stone-600 pt-6">
+        <p className="pt-6 text-center text-sm text-stone-600 dark:text-stone-300">
           Don’t have an account?
           <Link
             to={"/register"}
-            className={"ms-1 text-stone-800 font-semibold hover:border-b hover:font-bold focus:outline-stone-500"}
+            className={
+              "ms-1 font-semibold text-stone-800 hover:border-b hover:font-bold focus:outline-none"
+            }
           >
             Sign up
           </Link>

@@ -1,6 +1,14 @@
 import Error from "../error/Error.jsx";
 
-const Input = ({type, name, placeholder, extraClassName, required, register, errorMsg}) => {
+const Input = ({
+  type,
+  name,
+  placeholder,
+  extraClassName,
+  required,
+  register,
+  errorMsg,
+}) => {
   return (
     <>
       <input
@@ -8,13 +16,11 @@ const Input = ({type, name, placeholder, extraClassName, required, register, err
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`w-full border border-stone-300 rounded-lg pl-10 pr-3 py-2 focus:outline-none text-stone-800 ${extraClassName}`}
+        className={`w-full rounded-lg border border-stone-400 py-2 pr-3 pl-10 text-stone-800 focus:outline-none dark:text-stone-200 ${extraClassName} `}
         required={required}
       />
 
-      {
-        errorMsg && <Error>{errorMsg}</Error>
-      }
+      {errorMsg && <Error>{errorMsg}</Error>}
     </>
   );
 };
