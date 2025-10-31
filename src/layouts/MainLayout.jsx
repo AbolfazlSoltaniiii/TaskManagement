@@ -11,7 +11,7 @@ const MainLayout = () => {
     >
       <Header isDarkMode={isDarkMode} updateDarkMode={setIsDarkMode} />
 
-      <main className={"flex flex-1 items-center justify-center"}>
+      <main className={"flex flex-1 items-center justify-center overflow-hidden"}>
         <Outlet />
       </main>
     </div>

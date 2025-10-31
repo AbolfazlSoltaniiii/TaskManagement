@@ -3,6 +3,7 @@ import MainLayout from "./layouts/MainLayout.jsx";
 import MainPage from "./pages/main/MainPage.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
+import Tasks from "./pages/task/Tasks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "tasks",
-        element: <div>Tasks</div>,
+        element: <Tasks />,
       },
     ],
   },
