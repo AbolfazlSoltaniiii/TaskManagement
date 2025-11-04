@@ -23,7 +23,7 @@ const Tasks = () => {
 
   return (
     <div className="flex h-full w-full flex-col items-center">
-      <div className={"mt-20 w-[65%]"}>
+      <div className={"mt-20 w-full md:w-[65%]"}>
         <Calendar selected={selected} updateSelected={setSelected} />
       </div>
 
