@@ -21,7 +21,13 @@ const Tasks = () => {
     const fullDate = formatDate(selected);
 
     const fetchTasks = async () => {
-      setTasks(await getTasks(fullDate, userId));
+      let dailyTasks = await getTasks(fullDate, userId);
+
+      dailyTasks = dailyTasks.sort((current, next) =>
+        current.time.localeCompare(next.time),
+      );
+
+      setTasks(dailyTasks);
     };
 
     fetchTasks();
@@ -41,6 +47,7 @@ const Tasks = () => {
             title={task.title}
             description={task.description}
             isDone={task.isDone}
+            time={task.time}
             onDeleteTaskClick={onDeleteTaskClick}
           />
         ))}
