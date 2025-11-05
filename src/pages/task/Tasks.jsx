@@ -3,9 +3,14 @@ import { useEffect, useState } from "react";
 import TaskItem from "../../components/taskItem/TaskItem.jsx";
 import { deleteTask, getTasks } from "../../services/apiTasks.js";
 import { formatDate } from "../../utils/helpers.js";
+import dayjs from "dayjs";
 
 const Tasks = () => {
-  const [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState({
+    date: dayjs().date(),
+    month: dayjs().month() + 1,
+    year: dayjs().year(),
+  });
   const [tasks, setTasks] = useState([]);
 
   const activeUser = sessionStorage.getItem("activeUser");
