@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { updateTaskIsDone } from "../../services/apiTasks.js";
+import { FaTrashAlt } from "react-icons/fa";
 
-const TaskItem = ({ taskId, title, description, isDone }) => {
+const TaskItem = ({ taskId, title, description, isDone, onDeleteTaskClick }) => {
   const [isTaskDone, setIsTaskDone] = useState(isDone);
 
   const onIsDoneChange = () => {
@@ -11,7 +12,7 @@ const TaskItem = ({ taskId, title, description, isDone }) => {
   };
 
   return (
-    <div className={"mb-3 rounded-xl border border-stone-400 p-4"}>
+    <div className={"relative mb-3 rounded-xl border border-stone-400 p-4"}>
       <div className="flex items-center gap-1.5 pb-4">
         <input
           type="checkbox"
@@ -31,6 +32,13 @@ const TaskItem = ({ taskId, title, description, isDone }) => {
         className={`text-md ms-4 line-clamp-1 text-stone-800 ${isTaskDone ? "line-through" : ""}`}
       >
         {description}
+      </span>
+
+      <span className={"absolute top-3 right-3 cursor-pointer"}>
+        <FaTrashAlt
+          className={"text-xl text-red-500"}
+          onClick={() => onDeleteTaskClick(taskId)}
+        />
       </span>
     </div>
   );

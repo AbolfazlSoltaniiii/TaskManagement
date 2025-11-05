@@ -1,7 +1,7 @@
 import Calendar from "../../components/calendar/Calendar.jsx";
 import { useEffect, useState } from "react";
 import TaskItem from "../../components/taskItem/TaskItem.jsx";
-import { getTasks } from "../../services/apiTasks.js";
+import { deleteTask, getTasks } from "../../services/apiTasks.js";
 import { formatDate } from "../../utils/helpers.js";
 
 const Tasks = () => {
@@ -10,6 +10,12 @@ const Tasks = () => {
 
   const activeUser = sessionStorage.getItem("activeUser");
   const userId = JSON.parse(activeUser)[0]["id"];
+
+  const onDeleteTaskClick = (taskId) => {
+    deleteTask(taskId);
+
+    setTasks((tasks) => tasks.filter((task) => task.id !== taskId));
+  };
 
   useEffect(() => {
     const fullDate = formatDate(selected);
@@ -35,6 +41,7 @@ const Tasks = () => {
             title={task.title}
             description={task.description}
             isDone={task.isDone}
+            onDeleteTaskClick={onDeleteTaskClick}
           />
         ))}
       </div>
