@@ -14,3 +14,11 @@ export const updateTaskIsDone = async (taskId, isDone) => {
 
   return await res.json();
 };
+
+export const deleteTask = async (taskId) => {
+  const res = await fetch(`http://localhost:8000/tasks/${taskId}`, {
+    method: "DELETE",
+  })
+
+  return await res.json();
+}
