@@ -4,6 +4,7 @@ import TaskItem from "../../components/taskItem/TaskItem.jsx";
 import { deleteTask, getTasks } from "../../services/apiTasks.js";
 import { formatDate } from "../../utils/helpers.js";
 import dayjs from "dayjs";
+import EmptyTask from "./EmptyTask/EmptyTask.jsx";
 
 const Tasks = () => {
   const [selected, setSelected] = useState({
@@ -44,19 +45,23 @@ const Tasks = () => {
         <Calendar selected={selected} updateSelected={setSelected} />
       </div>
 
-      <div className="mt-4 mb-6 w-full flex-1 overflow-y-auto px-6 md:w-[60%]">
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            taskId={task.id}
-            title={task.title}
-            description={task.description}
-            isDone={task.isDone}
-            time={task.time}
-            onDeleteTaskClick={onDeleteTaskClick}
-          />
-        ))}
-      </div>
+      {tasks.length ? (
+        <div className="mt-4 mb-6 w-full flex-1 overflow-y-auto px-6 md:w-[60%]">
+          {tasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              taskId={task.id}
+              title={task.title}
+              description={task.description}
+              isDone={task.isDone}
+              time={task.time}
+              onDeleteTaskClick={onDeleteTaskClick}
+            />
+          ))}
+        </div>
+      ) : (
+        <EmptyTask />
+      )}
     </div>
   );
 };
