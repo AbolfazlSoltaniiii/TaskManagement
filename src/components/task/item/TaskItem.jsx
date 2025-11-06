@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateTaskIsDone } from "../../services/apiTasks.js";
+import { updateTaskIsDone } from "../../../services/apiTasks.js";
 import { FaTrashAlt } from "react-icons/fa";
 
 const TaskItem = ({
