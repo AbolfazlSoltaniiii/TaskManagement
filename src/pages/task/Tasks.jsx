@@ -1,10 +1,10 @@
 import Calendar from "../../components/calendar/Calendar.jsx";
 import { useEffect, useState } from "react";
-import TaskItem from "../../components/taskItem/TaskItem.jsx";
+import TaskItem from "../../components/task/item/TaskItem.jsx";
 import { deleteTask, getTasks } from "../../services/apiTasks.js";
 import { formatDate } from "../../utils/helpers.js";
 import dayjs from "dayjs";
-import EmptyTask from "./EmptyTask/EmptyTask.jsx";
+import EmptyTask from "../../components/task/empty/EmptyTask.jsx";
 
 const Tasks = () => {
   const [selected, setSelected] = useState({
