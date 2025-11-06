@@ -46,7 +46,7 @@ const Tasks = () => {
       </div>
 
       {tasks.length ? (
-        <div className="mt-4 mb-6 w-full flex-1 overflow-y-auto px-6 md:w-[60%]">
+        <div className="mt-4 mb-6 w-full flex-1 overflow-y-auto px-4 md:w-[60%]">
           {tasks.map((task) => (
             <TaskItem
               key={task.id}

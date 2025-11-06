@@ -20,8 +20,10 @@ const TaskItem = ({
 
   return (
     <div
-      className={`relative mb-4 rounded-2xl border border-stone-300 px-5 pt-5 pb-11 ${
-        isTaskDone ? "bg-stone-200 opacity-80" : "bg-stone-100 opacity-90"
+      className={`relative mb-4 rounded-2xl border border-stone-300 px-5 pt-5 pb-11 dark:border-stone-700 ${
+        isTaskDone
+          ? "bg-stone-200 opacity-80 dark:bg-neutral-800"
+          : "bg-stone-100 opacity-90 dark:bg-neutral-900"
       }`}
     >
       <div className="flex items-center gap-2 pb-3">
@@ -33,7 +35,7 @@ const TaskItem = ({
         />
 
         <p
-          className={`text-xl font-semibold text-stone-800 transition-colors ${
+          className={`text-xl font-semibold text-stone-800 transition-colors dark:text-stone-200 ${
             isTaskDone ? "text-stone-500 line-through" : ""
           }`}
         >
@@ -42,7 +44,7 @@ const TaskItem = ({
       </div>
 
       <p
-        className={`ms-7 line-clamp-2 text-base leading-relaxed text-stone-700 ${
+        className={`ms-7 line-clamp-2 text-base leading-relaxed text-stone-700 dark:text-stone-300 ${
           isTaskDone ? "text-stone-400 line-through" : ""
         }`}
       >
