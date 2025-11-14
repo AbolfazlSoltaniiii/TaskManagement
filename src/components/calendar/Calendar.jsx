@@ -88,6 +88,12 @@ const Calendar = ({ selected, updateSelected }) => {
     setDays(months()[now.weekOfMonth]);
     index = weekOfMonth();
     month = dayjs().month();
+
+    updateSelected({
+      date: dayjs().date(),
+      month: dayjs().month() + 1,
+      year: dayjs().year(),
+    });
   };
 
   return (
