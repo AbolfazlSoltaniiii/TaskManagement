@@ -1,6 +1,25 @@
 import LinkButton from "../../components/button/LinkButton.jsx";
+import { useEffect, useState } from "react";
 
 const MainPage = () => {
+  const fullTitle = "Start organizing your tasks";
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    let index = 0;
+
+    const timer = setInterval(() => {
+      if (index <= fullTitle.length) {
+        setDisplayedText(fullTitle.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 80);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div>
       <p
@@ -9,7 +28,7 @@ const MainPage = () => {
         }
       >
         <span className="block pb-3 md:inline md:pb-0">😇</span>
-        Start organizing your tasks
+        {displayedText}
         <span className="block pt-3 md:inline md:pt-0">😇</span>
       </p>
 
